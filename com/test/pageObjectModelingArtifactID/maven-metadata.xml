@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.test</groupId>
+  <artifactId>pageObjectModelingArtifactID</artifactId>
+  <versioning>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20170904021549</lastUpdated>
+  </versioning>
+</metadata>
