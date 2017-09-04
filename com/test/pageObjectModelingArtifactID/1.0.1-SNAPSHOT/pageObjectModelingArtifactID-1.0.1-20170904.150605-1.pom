@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>pageObjectModelingArtifactID</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+  
+  <packaging>jar</packaging>
+  <name>pageObjectModelingArtifactID</name>
+  <url>http://maven.apache.org</url>
+<parent>
+   	 	<groupId>com.test</groupId>
+   	 	<relativePath>../ParentProject/pom.xml</relativePath>
+    	<artifactId>parentProject</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+</parent>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <github.global.server>github</github.global.server>
+    
+  </properties>
+
+<distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+</distributionManagement>
+
+  <dependencies>
+  
+  </dependencies>
+  
+  
+   <build>
+     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>src\test\java\suiteMaster.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+          
+       <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+            <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+        </configuration>
+    </plugin>  
+     
+     <plugin>
+         <groupId>com.github.github</groupId>
+         <artifactId>site-maven-plugin</artifactId>
+         <version>0.11</version>
+         <configuration>
+              <!-- git commit message -->
+              <message>Maven artifacts for ${project.version}</message>
+              <!-- disable webpage processing -->
+              <noJekyll>true</noJekyll>
+              <!-- matches distribution management repository url above -->
+              <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+              <!-- remote branch name -->
+              <branch>refs/heads/master</branch>
+              <!-- If you remove this then the old artifact will be removed and new 
+               one will replace. But with the merge tag you can just release by changing 
+                                                the version -->
+              <merge>true</merge>
+              <includes>
+                <include>**/*</include>
+                </includes>
+                <!-- github repo name -->
+                <repositoryName>sample</repositoryName>
+                <!-- github username -->
+                <repositoryOwner>ayanawsolomon</repositoryOwner>
+          </configuration>
+          <executions>
+              <execution>
+                    <goals>
+                         <goal>site</goal>
+                    </goals>
+                    <phase>deploy</phase>
+              </execution>
+          </executions>
+		</plugin>
+    </plugins>
+  </build>
+  
+</project>
