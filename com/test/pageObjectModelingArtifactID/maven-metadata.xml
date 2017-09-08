@@ -4,10 +4,8 @@
   <artifactId>pageObjectModelingArtifactID</artifactId>
   <versioning>
     <versions>
-      <version>0.0.1-SNAPSHOT</version>
-      <version>1.0.1-SNAPSHOT</version>
       <version>2.0.1-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20170904161423</lastUpdated>
+    <lastUpdated>20170908144235</lastUpdated>
   </versioning>
 </metadata>
